@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+  <div id="app" v-cloak>
+    <h1>todo管理アプリ</h1>
+    <button @click='parge'>終了</button>
+    <!-- <p v-if='noItem'>taskを入力してください。</p> -->
+    
+    <form @submit.prevent="addItem" class="form" name="addtaskform">
+      <label class="form-label">task</label>
+      <input v-model="newItem" type="text" class="form-input" name="writetask">
+      <button class="btn">add</button>
+    </form>
+    <p v-if='errerMessage'>{{ errerMessage }}</p>
+    
+    <div class="container">
+      <div class="remaintask" title="remaintask">
+        <h2>remaintask</h2>
+        <div class="tasklist">
+          <ul>
+            <li v-for="(todo, index) in remain">
+              <span @click="remaining(todo)" class="remove">
+              {{ todo.title }}
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div  class="finishtask" title="finishtask">
+        <h2>finishtask</h2>
+        <div class="tasklist tlf">
+          <ul>
+            <li v-for="(todo, index) in finish">
+              <span @click="finising(todo)" class="remove">
+                {{ todo.title }}
+              </span>
+            </li> 
+          </ul>
+        </div>
+      </div>
+    </div>
+ 
+      <hr>
+
+      <li>
+        {{ sepalate }}
+      </li>
+
+      
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+todo管理アプリのアップデート
+
+今回の実装内容
+・過去のタスクの閲覧（続き）
+・日付を利用した検索機能
+・ログイン機能
+
+・用いたスキル
+HTML / CSS / Vue.js
+
+学んだこと
+v-cloak
+
+filter(element, index, array)
+filterを利用した連想配列の重複検索
+find,findindex  
+
+
+
