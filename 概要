@@ -14,6 +14,30 @@ v-cloak
 filter(element, index, array)
 filterを利用した連想配列の重複検索
 find,findindex  
+github soucetreeを利用したgithubの運用(pushまで)
+ssh sshkeyについて(terminalを使いファイルの操作を行った)
 
+なぜ機能するのか？
+処理の行程を理解すること
+a() {
+const groupingMap = this.endTask.reduce(
+            (map, e) => map.set(e.today,  [ ...(map.get(e.today) || []), e] ), new Map())
+          
+          const duplicatedElements = [...groupingMap].filter(([today, array]) => array.length > 1 )
+          
+          duplicatedElements.forEach(([today, array]) => {
+            console.log(`${today}:`)
+            array.forEach(e => {
+              console.log(`  ${JSON.stringify(e)}`)
+            })
+          })
+}
 
+reduce、map.set、map.get、 ||、 new Map、[...groupingMap].filter、JSON.stringify(e)
+mapで取得したものはJSONでで利用できないため変換する必要がある。
+reduceはから配列がある場合機能しないため
 
+学びたいこと
+terminal command(Linux?)
+
+// return this.endTask.filter((x,y,z)=>z.slice(0,z.length).filter(w=>w.today==x.today).length>=2);

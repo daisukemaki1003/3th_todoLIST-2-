@@ -83,12 +83,13 @@
       computed: {
 
         sepalate() {
-          // return this.endTask.filter((x,y,z)=>z.slice(0,z.length).filter(w=>w.today==x.today).length>=2);
           
           const groupingMap = this.endTask.reduce(
-            (map, e) => map.set(e.today,  [ ...(map.get(e.today) || []), e] ), new Map())
+            (map, e) => map.set(e.today,  [ ...map.get(e.today) || [], e] ), new Map())
+            console.log(groupingMap);
           
-          const duplicatedElements = [...groupingMap].filter(([today, array]) => array.length > 1 )
+          const duplicatedElements = [...groupingMap].filter(([today]) => today.length > 1 )
+          console.log(duplicatedElements);
           
           duplicatedElements.forEach(([today, array]) => {
             console.log(`${today}:`)
@@ -97,6 +98,7 @@
             })
           })
         },
+
     
       remain() {
         return this.todos.filter(todo => !todo.isDone);
