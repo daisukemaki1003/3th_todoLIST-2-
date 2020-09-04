@@ -37,7 +37,10 @@ reduce、map.set、map.get、 ||、 new Map、[...groupingMap].filter、JSON.str
 mapで取得したものはJSONでで利用できないため変換する必要がある。
 reduceはから配列がある場合機能しないため
 
-学びたいこと
-terminal command(Linux?)
+var result = arr.reduce(function callback(前回の値, 今回の値[, Index[, array]]) {
+  // return 次の値
+}[, コールバック関数呼び出し時の値])
+累積値を前回の値と考えると理解しやすい
 
-// return this.endTask.filter((x,y,z)=>z.slice(0,z.length).filter(w=>w.today==x.today).length>=2);
+重複した要素を削除した配列の作り方
+

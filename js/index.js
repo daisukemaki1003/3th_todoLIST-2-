@@ -9,6 +9,7 @@
       errerMessage: '',
       todos: [],
       endTask: [],
+
     },
 
     watch: {
@@ -23,8 +24,9 @@
         handler() {
           localStorage.setItem('endTask', JSON.stringify(this.endTask));
         },
-        deep: true
+        
       },
+    
     },
 
     mounted() {
@@ -61,16 +63,18 @@
           d.getFullYear() + "/" + 
           (d.getMonth() +1 ) + "/" + 
           d.getDate();
+
           
           this.finish.forEach(f => {
             var fItem = f.title;
             var pastTask = {
               title: fItem,
-              today: date
+              date: date
             }
             this.endTask.push(pastTask);
           });
-            
+          console.log(this.a);
+        
           return this.todos = this.todos.filter(todo => !todo.isDone);
         };
         },
@@ -82,22 +86,18 @@
       
       computed: {
 
-        sepalate() {
-          
-          const groupingMap = this.endTask.reduce(
-            (map, e) => map.set(e.today,  [ ...map.get(e.today) || [], e] ), new Map())
-            console.log(groupingMap);
-          
-          const duplicatedElements = [...groupingMap].filter(([today]) => today.length > 1 )
-          console.log(duplicatedElements);
-          
-          duplicatedElements.forEach(([today, array]) => {
-            console.log(`${today}:`)
-            array.forEach(e => {
-              console.log(`  ${JSON.stringify(e)}`)
-            })
-          })
-        },
+        a() {
+        const groupingMap = this.endTask.reduce(
+                    (map, e) => map.set(e.date,  [ ...(map.get(e.date) || []), e] ), new Map())
+                
+
+                  return [...groupingMap].filter(([date, array]) => array.length > 1 )
+      
+          },
+
+        
+        
+        
 
     
       remain() {

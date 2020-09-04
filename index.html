@@ -9,16 +9,22 @@
 </head>
 <body>
   <div id="app" v-cloak>
-    <h1>todo管理アプリ</h1>
-    <button @click='parge'>終了</button>
-    <!-- <p v-if='noItem'>taskを入力してください。</p> -->
-    
-    <form @submit.prevent="addItem" class="form" name="addtaskform">
-      <label class="form-label">task</label>
-      <input v-model="newItem" type="text" class="form-input" name="writetask">
-      <button class="btn">add</button>
-    </form>
-    <p v-if='errerMessage'>{{ errerMessage }}</p>
+    <div class="upper">
+
+      <h1>todo管理アプリ</h1>
+      
+      <form @submit.prevent="addItem" class="form" name="addtaskform">
+        <label class="form-label">task</label>
+        <input v-model="newItem" type="text" class="form-input" name="writetask">
+        
+        <div class="btns">
+          <button class="btn">追加</button>
+          <button @click='parge' class="btn">終了</button>
+        </div>
+      </form>
+      
+    </div>
+    <p v-if='errerMessage' class="errer">{{ errerMessage }}</p>
     
     <div class="container">
       <div class="remaintask" title="remaintask">
@@ -36,7 +42,7 @@
 
       <div  class="finishtask" title="finishtask">
         <h2>finishtask</h2>
-        <div class="tasklist tlf">
+        <div class="tasklist tlf" >
           <ul>
             <li v-for="(todo, index) in finish">
               <span @click="finising(todo)" class="remove">
@@ -49,12 +55,14 @@
     </div>
  
       <hr>
-
-      <li>
-        {{ sepalate }}
-      </li>
-
-      
+    <section>
+      <article v-for='Item in a'>
+        <h3>{{ Item[0] }}</h3> 
+        <p v-for='(task, index) in Item[1]' class="">
+          {{index+1}} : {{ task.title }}
+        </p>
+      </article>
+    </section>
 
   </div>
 
